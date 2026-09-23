@@ -149,6 +149,7 @@ import AdminLiveSessions from "./pages/admin/AdminLiveSessions";
 import { SessionTracker } from "@/hooks/useSessionTracker";
 import { PwaRouteGate } from "@/components/PwaRouteGate";
 import { Seo } from "@/components/Seo";
+import { AppearanceProvider } from "@/hooks/useAppearance";
 
 const queryClient = new QueryClient();
 
@@ -181,6 +182,7 @@ function LegacyAppRedirect() {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <AppearanceProvider>
     <TooltipProvider>
       <Toaster />
       <Sonner />
@@ -347,6 +349,7 @@ const App = () => (
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
+    </AppearanceProvider>
   </QueryClientProvider>
 );
 

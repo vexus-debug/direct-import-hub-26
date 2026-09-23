@@ -1,4 +1,5 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
+import { useAppearance } from "@/hooks/useAppearance";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { DashboardSidebar } from "./DashboardSidebar";
 import { DashboardHeader } from "./DashboardHeader";
@@ -21,24 +22,12 @@ const springTransition = {
 
 export function DashboardLayout({ children }: DashboardLayoutProps) {
   const [aiOpen, setAiOpen] = useState(false);
-  const [appearance, setAppearance] = useState<"light" | "dark">("light");
+  const { appearance, toggleAppearance } = useAppearance();
   const isMobile = useIsMobile();
   const location = useLocation();
   const navType = useNavigationType();
   const isBack = navType === "POP";
 
-  useEffect(() => {
-    const saved = window.localStorage.getItem("clinexus-dashboard-appearance");
-    if (saved === "light" || saved === "dark") {
-      setAppearance(saved);
-      return;
-    }
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) setAppearance("dark");
-  }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem("clinexus-dashboard-appearance", appearance);
-  }, [appearance]);
 
   // Mobile Chrome shows composited-tile corruption (horizontal noise lines)
   // when large scrolling subtrees are transformed/scaled. Use a plain fade
@@ -64,7 +53,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
             onToggleAI={() => setAiOpen(!aiOpen)}
             aiOpen={aiOpen}
             appearance={appearance}
-            onToggleAppearance={() => setAppearance((current) => current === "light" ? "dark" : "light")}
+            onToggleAppearance={toggleAppearance}
           />
 
           {isMobile ? (
