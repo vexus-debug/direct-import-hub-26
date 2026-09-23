@@ -149,6 +149,7 @@ import AdminLiveSessions from "./pages/admin/AdminLiveSessions";
 import { SessionTracker } from "@/hooks/useSessionTracker";
 import { PwaRouteGate } from "@/components/PwaRouteGate";
 import { Seo } from "@/components/Seo";
+import { AppearanceProvider } from "@/hooks/useAppearance";
 
 const queryClient = new QueryClient();
 
