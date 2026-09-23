@@ -707,7 +707,8 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.dashboard-theme.dark {
+.dashboard-theme.dark,
+.dashboard-dark .dashboard-theme {
   --background: 197 43% 6%;
   --foreground: 168 21% 94%;
   --card: 186 51% 10%;
