@@ -181,6 +181,7 @@ function LegacyAppRedirect() {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <AppearanceProvider>
     <TooltipProvider>
       <Toaster />
       <Sonner />
