@@ -53,7 +53,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
             onToggleAI={() => setAiOpen(!aiOpen)}
             aiOpen={aiOpen}
             appearance={appearance}
-            onToggleAppearance={() => setAppearance((current) => current === "light" ? "dark" : "light")}
+            onToggleAppearance={toggleAppearance}
           />
 
           {isMobile ? (
